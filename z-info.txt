@@ -1,1 +1,12 @@
-echo 'Class: Router, method: run';
+echo 'Class: Router, method: run';  ---вывести на экран строку
+echo 'Путь к базовой директории-ROOT: ' . ROOT;  --- тоже и переменную
+echo '<br>формируем имя контроллера: ' . $controllerName;
+echo '<pre>';  ---перенос строки
+
+Распечатать то что хранится в переменной (в том числе массив):
+echo '<pre>';
+print_r($this->routes); 
+echo '<pre>';
+
+var_dump($this->routes);  --- тоже, но с подробной информацией
+		

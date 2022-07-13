@@ -1,115 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Главная</title>
-        <link href="/template/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/template/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/template/css/prettyPhoto.css" rel="stylesheet">
-        <link href="/template/css/price-range.css" rel="stylesheet">
-        <link href="/template/css/animate.css" rel="stylesheet">
-        <link href="/template/css/main.css" rel="stylesheet">
-        <link href="/template/css/responsive.css" rel="stylesheet">
+<html lang="ru">
 
-        <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->       
-        <link rel="shortcut icon" href="/template/images/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/template/images/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/template/images/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/template/images/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="/template/images/ico/apple-touch-icon-57-precomposed.png">
-    </head><!--/head-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>РемХолТех</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/template/css/reset.css">
+	<link rel="stylesheet" href="/template/css/slick.css">
+	<link rel="stylesheet" href="/template/css/jquery.fancybox.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="/template/css/style.css">
+</head>
 
-    <body>
-        <div class="page-wrapper">
+<body>
 
-
-            <header id="header"><!--header-->
-                <div class="header_top"><!--header_top-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="contactinfo">
-                                    <ul class="nav nav-pills">
-                                        <li><a href="#"><i class="fa fa-phone"></i> +38 093 000 11 22</a></li>
-                                        <li><a href="#"><i class="fa fa-envelope"></i> zinchenko.us@gmail.com</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="social-icons pull-right">
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/header_top-->
-
-                <div class="header-middle"><!--header-middle-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="logo pull-left">
-                                    <a href="/"><img src="/template/images/home/logo.png" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="shop-menu pull-right">
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="/cart">
-                                                <i class="fa fa-shopping-cart"></i> Корзина 
-                                                (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)
-                                            </a>
-                                        </li>
-                                        <?php if (User::isGuest()): ?>                                        
-                                            <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
-                                        <?php else: ?>
-                                            <li><a href="/cabinet/"><i class="fa fa-user"></i> Аккаунт</a></li>
-                                            <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/header-middle-->
-
-                <div class="header-bottom"><!--header-bottom-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-                                <div class="mainmenu pull-left">
-                                    <ul class="nav navbar-nav collapse navbar-collapse">
-                                        <li><a href="/">Главная</a></li>
-                                        <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
-                                            <ul role="menu" class="sub-menu">
-                                                <li><a href="/catalog/">Каталог товаров</a></li>
-                                                <li><a href="/cart/">Корзина</a></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a href="/about/">О магазине</a></li>
-                                        <li><a href="/contacts/">Контакты</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/header-bottom-->
-
-            </header><!--/header-->
+	<header class="header" style="background-image: url(../..<?php echo Info::getBg($info['id']); ?>);">
+		<div class="container">
+			<div class="header__top">
+				<a class="logo" href="/">
+					<img class="logo__img" src="<?php echo Info::getLogoImage($info['id']); ?>" alt="ремонт холодильников">
+				</a>
+				<a class="phone" href="#"><?php echo $info['phone-number']; ?></a>
+			</div>
+			<div class="header__content">
+				<h1 data-wow-delay=".5s" class="header__title wow animate__fadeInLeft">
+					<?php echo $info['title']; ?>
+				</h1>
+				<h2 data-wow-delay="1s" class="header__subtitle wow animate__fadeInLeft">
+					<?php echo $info['subtitle']; ?>
+				</h2>
+				<p data-wow-delay="1.5s" class="header__text wow animate__fadeInLeft">
+					<?php echo $info['text']; ?>
+				</p>
+				<a class="button" href="#contact">КОНСУЛЬТАЦИЯ ЭКСПЕРТА</a>
+				<!-- <div class="social header__social">
+					<a class="social__link" href="#">
+						<svg class="test" width="26" height="26">
+							<use xlink:href="images/icon/sprite.svg#instagram"></use>
+						</svg>
+					</a>
+					<a class="social__link" href="#">
+						<svg width="25" height="19">
+							<use xlink:href="images/icon/sprite.svg#telegram"></use>
+						</svg>
+					</a>
+					<a class="social__link" href="#">
+						<svg width="26" height="26">
+							<use xlink:href="images/icon/sprite.svg#whatsapp"></use>
+						</svg>
+					</a>
+					<a class="social__link" href="#">
+						<svg width="14" height="25">
+							<use xlink:href="images/icon/sprite.svg#facebook"></use>
+						</svg>
+					</a>
+				</div> -->
+				<img data-wow-delay="2s" class="header__images wow animate__fadeInUpBig" src="<?php echo Info::getImage($info['id']); ?>" alt="ремонт холодильников">
+			</div>
+		</div>
+	</header>

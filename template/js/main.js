@@ -1,49 +1,35 @@
-/*price range*/
+$(function(){
 
-$('#sl2').slider();
-
-var RGBChange = function () {
-    $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
-};
-
-/*scroll to top*/
-
-$(document).ready(function () {
-    $(function () {
-        $.scrollUp({
-            scrollName: 'scrollUp', // Element ID
-            scrollDistance: 300, // Distance from top/bottom before showing element (px)
-            scrollFrom: 'top', // 'top' or 'bottom'
-            scrollSpeed: 300, // Speed back to top (ms)
-            easingType: 'linear', // Scroll to top easing (see http://easings.net/)
-            animation: 'fade', // Fade, slide, none
-            animationSpeed: 200, // Animation in speed (ms)
-            scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
-            //scrollTarget: false, // Set a custom target element for scrolling to the top
-            scrollText: '<i class="fa fa-angle-up"></i>', // Text for element, can contain HTML
-            scrollTitle: false, // Set a custom <a> title if required.
-            scrollImg: false, // Set true to use image
-            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-            zIndex: 2147483647 // Z-Index for the overlay
-        });
-    });
-
-    $('#myCarousel').carousel({
-        interval: 10000
-    })
-
-    $('.carousel .item').each(function () {
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
+  $('.carousel__inner').slick({
+    arrows: false,
+    dots: true,
+    slidesToShow: 3,
+    responsive: [
+      {
+        breakpoint: 841,
+        settings: {
+          slidesToShow: 2
         }
-        next.children(':first-child').clone().appendTo($(this));
+      },
+      {
+        breakpoint: 601,
+        settings: {
+          slidesToShow: 1
+        }
+      },
+    ]
+  });
 
-        if (next.next().length > 0) {
-            next.next().children(':first-child').clone().appendTo($(this));
-        }
-        else {
-            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-        }
-    });
+  wow = new WOW(
+    {
+      boxClass: 'wow',      // default
+      animateClass: 'animate__animated', // default
+      offset: 0,          // default
+      mobile: true,       // default
+      live: true        // default
+    }
+  )
+  wow.init();
+
+
 });

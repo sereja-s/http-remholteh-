@@ -1,22 +1,15 @@
 <?php
 
-/**
- * Контроллер AdminController
- * Главная страница в админпанели
- */
-class AdminController extends AdminBase
+class AdminController
 {
-    /**
-     * Action для стартовой страницы "Панель администратора"
-     */
-    public function actionIndex()
-    {
-        // Проверка доступа
-        self::checkAdmin();
+	public function actionIndex()
+	{
+		//echo '<br>' . $category;
+		//echo '<br>' . $id;
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin/index.php');
-        return true;
-    }
 
+		echo '<br><br>Применились: AdminController, actionIndex ';
+
+		return true;
+	}
 }

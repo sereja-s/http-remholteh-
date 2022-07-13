@@ -3,7 +3,7 @@
 // Массив с параметрами подключения к базе данных
 return array(
 	'host' => 'localhost',
-	'dbname' => 'refrigerator-repair',
+	'dbname' => 'remholteh',
 	'user' => 'root',
 	'password' => '',
 );

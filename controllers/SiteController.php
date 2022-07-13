@@ -1,86 +1,68 @@
 <?php
 
-namespace controllers;
+include_once ROOT . '/models/info.php';
+include_once ROOT . '/models/User.php';
 
-use models\Category;
-use models\Info;
-use models\Product;
-use User;
-
-/**
- * Контроллер CartController
- */
 class SiteController
 {
-
-	/**
-	 * Action для главной страницы
-	 */
 	public function actionIndex()
 	{
-		// Список категорий для левого меню
-		// $categories = Category::getCategoriesList();
 
-		// Список последних товаров
-		// $latestProducts = Product::getLatestProducts(6);
+		//echo '<br><br>Применились: SiteController, actionIndex ';
 
-		// Список товаров для слайдера
-		//  $sliderProducts = Product::getRecommendedProducts();
+		$info = info::getInfoById(1);
 
-		// Подключаем вид
-		require_once(ROOT . '/views/site/index.php');
-		return true;
-	}
+		$service = Info::getServicesById(1);
 
-	/**
-	 * Action для страницы "Контакты"
-	 */
-	public function actionContact()
-	{
+		$works = Info::getlistOfWorks();
+
+		/* echo '<pre>';
+		print_r($info);
+		echo '<pre>';
+
+		echo '<pre>';
+		print_r($service);
+		echo '<pre>';
+
+		echo '<pre>';
+		print_r($works);
+		echo '<pre>'; */
 
 		// Переменные для формы
-		$userEmail = false;
-		$userText = false;
+		$userName = '';
+		$userTel = '';
+		$userText = '';
 		$result = false;
 
 		// Обработка формы
 		if (isset($_POST['submit'])) {
-			// Если форма отправлена 
-			// Получаем данные из формы
-			$userEmail = $_POST['userEmail'];
+			// Если форма отправлена получаем данные из формы
+			$userName = $_POST['userName'];
+			$userTel = $_POST['userTel'];
 			$userText = $_POST['userText'];
 
 			// Флаг ошибок
 			$errors = false;
 
 			// Валидация полей
-			if (!User::checkEmail($userEmail)) {
-				$errors[] = 'Неправильный email';
+			if (!User::checkPhone($userTel)) {
+				$errors[] = 'Телефонный номер <br> должен содержать не меньше, <br> чем 10 символов';
 			}
 
 			if ($errors == false) {
-				// Если ошибок нет
-				// Отправляем письмо администратору 
-				$adminEmail = 'php.start@mail.ru';
-				$message = "Текст: {$userText}. От {$userEmail}";
+				// Если ошибок нет отправляем письмо администратору
+
+				$adminEmail = 'sait_postroen@mail.ru';
+				$message = "Текст: {$userText} . От {$userName} .  {$userTel}";
 				$subject = 'Тема письма';
 				$result = mail($adminEmail, $subject, $message);
-				$result = true;
+				//$result = true;
 			}
 		}
 
 		// Подключаем вид
-		require_once(ROOT . '/views/site/contact.php');
-		return true;
-	}
+		require_once(ROOT . '/views/site/index.php');
 
-	/**
-	 * Action для страницы "О магазине"
-	 */
-	public function actionAbout()
-	{
-		// Подключаем вид
-		require_once(ROOT . '/views/site/about.php');
 		return true;
 	}
 }
